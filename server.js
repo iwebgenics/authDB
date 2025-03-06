@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 5002;
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: "*", allowedHeaders: ["Content-Type", "Authorization"] }));
 app.use(express.json());
 
 // Database Connection
@@ -34,6 +34,6 @@ app.get("/", (req, res) => {
 });
 
 // Start Server
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
 });
